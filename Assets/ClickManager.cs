@@ -11,16 +11,19 @@ public class ClickManager : MonoBehaviour
     public void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        gameManager.UpdateHintBox(null, false);
     }
 
     public void GoToItem(ItemData item)
     {
         //update hintbox
-        gameManager.UpdateHintBox(null, false);
+        
         // start moving player
-        StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));
         player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[1]);//call animation
         playerWalking = true;
+        StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));
+        
+        
         // equipment
         TryGettingItem(item);
        
