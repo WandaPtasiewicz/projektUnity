@@ -57,6 +57,7 @@ public class ClickManager : MonoBehaviour
         else
         {
             gameManager.UpdateHintBox(item, player.GetComponentInChildren<SpriteRenderer>().flipX);
+            gameManager.CheckSpecialConditions(item);
         }
         player.GetComponent<SpriteAnimator>().PlayAnimation(null); //base player position
         yield return null;
