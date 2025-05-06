@@ -8,13 +8,19 @@ public class SpriteAnimator : MonoBehaviour
     public AnimationData baseAnimation;
     Coroutine previousAnimation;
 
+    private void Start()
+    {
+        PlayAnimation(baseAnimation);
+    }
+
     public void PlayAnimation(AnimationData data)
     {
+        //stop previos animation
         if(previousAnimation != null)
         {
             StopCoroutine(previousAnimation);
         }
-        
+        //start new animation
         previousAnimation = StartCoroutine(PlayAnimationCoroutine(data));
         
     }
@@ -36,6 +42,10 @@ public class SpriteAnimator : MonoBehaviour
             {
                 i = 0;
             }
+        }
+        if (data.returnToBase && data != baseAnimation)
+        {
+            PlayAnimation(baseAnimation);
         }
 
         yield return null;

@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public static List<int> collectedItems = new List<int>();
     static float moveSpeed = 3.5f, moveAccuracy = 0.15f;
+
+    [Header("Setup")]
     public AnimationData[] playerAnimations;
     public RectTransform nameTag, hintBox;
+
+    [Header("Local Scenes")]
     public Image blockingImage;
     public GameObject[] localScenes;
     int activeLocalScene = 0;
@@ -18,6 +22,14 @@ public class GameManager : MonoBehaviour
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
         Vector2 positionDiffrence = point - (Vector2)myObject.position; //set direction
+        //flip object
+        if (myObject.GetComponentInChildren<SpriteRenderer>() && positionDiffrence.x != 0)
+        {
+            myObject.GetComponentInChildren<SpriteRenderer>().flipX = positionDiffrence.x > 0;
+        }
+        {
+
+        }
         while (positionDiffrence.magnitude > moveAccuracy) //stop when near the point
         {
             myObject.Translate(moveSpeed * positionDiffrence.normalized * Time.deltaTime); // move in direction frame
@@ -75,15 +87,26 @@ public class GameManager : MonoBehaviour
                 break;
             case -1:
                 //win
-                StartCoroutine(ChangeScene(3, 1));
+                float delay = item.successAnimation.sprites.Length * item.successAnimation.framesOfGap * AnimationData.targetFrameTime;
+                StartCoroutine(ChangeScene(2, delay));
                 break;
         }
     }
 
     public IEnumerator ChangeScene(int sceneNumber, float delay)
     {
+        yield return new WaitForSeconds(delay);
+
+        //if end game remove theplayer
+
+
         Color c = blockingImage.color;
         //screnn black and block clixking
+        if(sceneNumber == 2)
+        {
+            FindObjectOfType<ClickManager>().player.gameObject.SetActive(false);
+        }
+
         blockingImage.enabled = true;
         while (blockingImage.color.a<1)
         {
@@ -102,6 +125,11 @@ public class GameManager : MonoBehaviour
         //hide hint box
         UpdateHintBox(null,false);
         //reset animations
+
+        foreach(SpriteAnimator spriteAnimator in FindObjectsOfType<SpriteAnimator>())
+        {
+            spriteAnimator.PlayAnimation(null);
+        }
 
 
         while (blockingImage.color.a > 0)

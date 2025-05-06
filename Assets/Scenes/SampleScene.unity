@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 94590900}
   - component: {fileID: 94590899}
+  - component: {fileID: 94590901}
   m_Layer: 0
   m_Name: Soildier 2
   m_TagString: Untagged
@@ -200,13 +201,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94590898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.44, y: 4.19, z: 0}
+  m_LocalPosition: {x: 16.76, y: 4.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1487913922}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &94590901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94590898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 94590899}
+  baseAnimation: {fileID: 11400000, guid: 160ff5e4ad74ab94e815c5a77db11716, type: 2}
 --- !u!1 &121039968
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +253,105 @@ Transform:
   m_Father: {fileID: 477369481}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &140883861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 140883864}
+  - component: {fileID: 140883863}
+  - component: {fileID: 140883862}
+  m_Layer: 0
+  m_Name: Santa Bag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &140883862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140883861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 140883863}
+  baseAnimation: {fileID: 11400000, guid: 4727ba6b57d0c7e438401d1db4a3efe9, type: 2}
+--- !u!212 &140883863
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140883861}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2039414472, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.3333335, y: 5.5555553}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &140883864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140883861}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.83, y: -0.5813761, z: -0.0012387484}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 216093297}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205216314
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,12 +381,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goToPoint: {fileID: 573667319}
   itemID: -11
   requiredItemID: -100
-  goToPoint: {fileID: 573667319}
-  objectsToRemove: []
   objectName: 
   nameTagSize: {x: 0, y: 0.65}
+  objectsToRemove: []
+  objectsToActive: []
+  successAnimation: {fileID: 0}
   hintMessage: 
   hintBoxSize: {x: 0.1, y: 0.65}
 --- !u!4 &205216316
@@ -290,6 +406,134 @@ Transform:
   - {fileID: 573667319}
   m_Father: {fileID: 350119598}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &216093293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216093297}
+  - component: {fileID: 216093296}
+  - component: {fileID: 216093295}
+  - component: {fileID: 216093294}
+  m_Layer: 0
+  m_Name: Santa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &216093294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216093293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goToPoint: {fileID: 1482592377}
+  itemID: -1
+  requiredItemID: -1
+  objectName: FirePlace
+  nameTagSize: {x: 3.4, y: 0.65}
+  objectsToRemove:
+  - {fileID: 478468666}
+  - {fileID: 379081705}
+  objectsToActive:
+  - {fileID: 140883861}
+  successAnimation: {fileID: 11400000, guid: bca591b361a1b4f439e017d08a12510c, type: 2}
+  hintMessage: "I need some \nbooze for santa"
+  hintBoxSize: {x: 4, y: 1.3}
+--- !u!114 &216093295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216093293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 216093296}
+  baseAnimation: {fileID: 11400000, guid: fef662d4bd4163a41b5a9ee44fdecd0b, type: 2}
+--- !u!212 &216093296
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216093293}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.3333335, y: 5.5555553}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &216093297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216093293}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.7807932, y: -1.5853586, z: 0.0009044148}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 140883864}
+  - {fileID: 1051743374}
+  - {fileID: 1482592377}
+  m_Father: {fileID: 350119598}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &216801546
 GameObject:
@@ -663,7 +907,7 @@ Transform:
   - {fileID: 1425435057}
   - {fileID: 418550548}
   - {fileID: 1784893354}
-  - {fileID: 1051743374}
+  - {fileID: 216093297}
   - {fileID: 478440949}
   - {fileID: 205216316}
   - {fileID: 254481950}
@@ -680,6 +924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 379081707}
   - component: {fileID: 379081706}
+  - component: {fileID: 379081708}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -754,6 +999,20 @@ Transform:
   m_Father: {fileID: 1051743374}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379081708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379081705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 379081706}
+  baseAnimation: {fileID: 11400000, guid: 1b6e6cd99d7c5584eb03d5a22532b1a9, type: 2}
 --- !u!1 &414322266
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,12 +1156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goToPoint: {fileID: 1081835886}
   itemID: 0
   requiredItemID: -2
-  goToPoint: {fileID: 1081835886}
-  objectsToRemove: []
   objectName: Hint
   nameTagSize: {x: 3, y: 0.65}
+  objectsToRemove: []
+  objectsToActive: []
+  successAnimation: {fileID: 0}
   hintMessage: The room on the right
   hintBoxSize: {x: 3.3, y: 1.3}
 --- !u!4 &418550548
@@ -1116,12 +1377,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goToPoint: {fileID: 121039969}
   itemID: -12
   requiredItemID: -100
-  goToPoint: {fileID: 121039969}
-  objectsToRemove: []
   objectName: 
   nameTagSize: {x: 0, y: 0.65}
+  objectsToRemove: []
+  objectsToActive: []
+  successAnimation: {fileID: 0}
   hintMessage: 
   hintBoxSize: {x: 0.1, y: 0.65}
 --- !u!1 &478440947
@@ -1135,6 +1398,7 @@ GameObject:
   - component: {fileID: 478440949}
   - component: {fileID: 478440948}
   - component: {fileID: 478440950}
+  - component: {fileID: 478440951}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -1222,16 +1486,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 3
-  requiredItemID: 2
   goToPoint: {fileID: 1733201541}
+  itemID: 1
+  requiredItemID: 0
+  objectName: Plant
+  nameTagSize: {x: 3, y: 0.65}
   objectsToRemove:
   - {fileID: 478440947}
   - {fileID: 342869137}
-  objectName: Plant
-  nameTagSize: {x: 3, y: 0.65}
+  objectsToActive: []
+  successAnimation: {fileID: 0}
   hintMessage: I need water
   hintBoxSize: {x: 4, y: 0.65}
+--- !u!114 &478440951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478440947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 478440948}
+  baseAnimation: {fileID: 11400000, guid: 0033fb5638415b741b5234e7d6f82194, type: 2}
 --- !u!1 &478468666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1525,7 @@ GameObject:
   - component: {fileID: 478468669}
   - component: {fileID: 478468668}
   m_Layer: 5
-  m_Name: FirePlace UI Image
+  m_Name: SantaUI Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1293,7 +1573,7 @@ MonoBehaviour:
           m_MethodName: GoToItem
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1051743375}
+            m_ObjectArgument: {fileID: 216093294}
             m_ObjectArgumentAssemblyTypeName: ItemData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1321,7 +1601,7 @@ MonoBehaviour:
           m_MethodName: UpdateNameTag
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1051743375}
+            m_ObjectArgument: {fileID: 216093294}
             m_ObjectArgumentAssemblyTypeName: ItemData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1556,6 +1836,7 @@ MonoBehaviour:
   playerAnimations:
   - {fileID: 11400000, guid: 5bac8026c0e54e948a83ad61be3f58d3, type: 2}
   - {fileID: 11400000, guid: cbb4e5fbdc271b44d9ab887c24be5935, type: 2}
+  - {fileID: 11400000, guid: fe83e22f21466b84da10e4dbdc659612, type: 2}
   nameTag: {fileID: 1183125930}
   hintBox: {fileID: 649723548}
   blockingImage: {fileID: 934881736}
@@ -2362,6 +2643,105 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &1051661132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051661133}
+  - component: {fileID: 1051661135}
+  - component: {fileID: 1051661134}
+  m_Layer: 0
+  m_Name: Big Plant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1051661133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051661132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.99, y: -0.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1802634157}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1051661134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051661132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 1051661135}
+  baseAnimation: {fileID: 11400000, guid: 3db7597b0deb2fb4ca2b38b873c82fa1, type: 2}
+--- !u!212 &1051661135
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051661132}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2032202335, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.3333335, y: 5.5555553}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1051743372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2752,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1051743374}
   - component: {fileID: 1051743373}
-  - component: {fileID: 1051743375}
   m_Layer: 0
   m_Name: Fireplace
   m_TagString: Untagged
@@ -2440,35 +2819,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051743372}
   m_LocalRotation: {x: 0.035486154, y: -0, z: -0, w: 0.99937016}
-  m_LocalPosition: {x: -0.27079305, y: 1.08, z: 0.02}
+  m_LocalPosition: {x: 3.5100002, y: 2.6653585, z: 0.019095585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 379081707}
-  - {fileID: 1482592377}
-  m_Father: {fileID: 350119598}
-  m_RootOrder: 5
+  m_Father: {fileID: 216093297}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 4.067, y: 0, z: 0}
---- !u!114 &1051743375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1051743372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 3
-  requiredItemID: 2
-  goToPoint: {fileID: 1482592377}
-  objectsToRemove: []
-  objectName: FirePlace
-  nameTagSize: {x: 3.4, y: 0.65}
-  hintMessage: "I need some \nbooze for santa"
-  hintBoxSize: {x: 4, y: 1.3}
 --- !u!1 &1081835885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2806,12 +3164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goToPoint: {fileID: 1439836742}
   itemID: 0
   requiredItemID: 0
-  goToPoint: {fileID: 1439836742}
-  objectsToRemove: []
   objectName: 
   nameTagSize: {x: 3, y: 0.65}
+  objectsToRemove: []
+  objectsToActive: []
+  successAnimation: {fileID: 0}
   hintMessage: 
   hintBoxSize: {x: 4, y: 0.65}
 --- !u!1 &1425435055
@@ -2843,12 +3203,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goToPoint: {fileID: 1441675773}
   itemID: 0
   requiredItemID: -2
-  goToPoint: {fileID: 1441675773}
-  objectsToRemove: []
   objectName: Goal
   nameTagSize: {x: 2, y: 0.65}
+  objectsToRemove: []
+  objectsToActive: []
+  successAnimation: {fileID: 0}
   hintMessage: Escape with santa
   hintBoxSize: {x: 2.5, y: 1.3}
 --- !u!4 &1425435057
@@ -3135,13 +3497,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482592376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.68, y: -4.31, z: -0}
+  m_LocalRotation: {x: 0.035486154, y: -0, z: -0, w: 0.99937016}
+  m_LocalPosition: {x: 6.1900005, y: -1.6337867, z: -0.28660238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1051743374}
-  m_RootOrder: 1
+  m_Father: {fileID: 216093297}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1487913921
 GameObject:
@@ -3192,14 +3554,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 2
-  requiredItemID: -1
   goToPoint: {fileID: 1191669975}
+  itemID: 0
+  requiredItemID: -1
+  objectName: Water bottle
+  nameTagSize: {x: 6, y: 0.65}
   objectsToRemove:
   - {fileID: 773210738}
   - {fileID: 1537652933}
-  objectName: Water bottle
-  nameTagSize: {x: 6, y: 0.65}
+  objectsToActive: []
+  successAnimation: {fileID: 0}
   hintMessage: 
   hintBoxSize: {x: 4, y: 0.65}
 --- !u!1 &1537652933
@@ -3628,6 +3992,7 @@ GameObject:
   - component: {fileID: 1802634157}
   - component: {fileID: 1802634156}
   - component: {fileID: 1802634158}
+  - component: {fileID: 1802634159}
   m_Layer: 0
   m_Name: Big Man
   m_TagString: Untagged
@@ -3700,6 +4065,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1923174240}
+  - {fileID: 1051661133}
   m_Father: {fileID: 2011941222}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3715,14 +4081,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c50c1fef9b295f4f9e3429123c9563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 2
-  requiredItemID: 3
   goToPoint: {fileID: 1923174240}
-  objectsToRemove: []
+  itemID: 2
+  requiredItemID: 1
   objectName: Big Man
   nameTagSize: {x: 3, y: 0.65}
-  hintMessage: He got booze
+  objectsToRemove:
+  - {fileID: 978317525}
+  objectsToActive:
+  - {fileID: 1051661132}
+  successAnimation: {fileID: 11400000, guid: c8360a73b377df34aa0055c7d5684241, type: 2}
+  hintMessage: I need to scare him
   hintBoxSize: {x: 4, y: 0.65}
+--- !u!114 &1802634159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802634155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 1802634156}
+  baseAnimation: {fileID: 11400000, guid: 1028cf41eedd2ca49860d94cb8ef4f73, type: 2}
 --- !u!1 &1815107038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,7 +4589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923174239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.96, y: -2.69, z: 0}
+  m_LocalPosition: {x: -3.21, y: -3.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4222,6 +4606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1962136642}
   - component: {fileID: 1962136641}
+  - component: {fileID: 1962136643}
   m_Layer: 0
   m_Name: Soildier
   m_TagString: Untagged
@@ -4289,13 +4674,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962136640}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.6, y: 4.35, z: 0}
+  m_LocalPosition: {x: 12.24, y: 4.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1487913922}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1962136643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962136640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890a3e8bc2d35347bd8fb35f0459948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 1962136641}
+  baseAnimation: {fileID: 11400000, guid: 160ff5e4ad74ab94e815c5a77db11716, type: 2}
 --- !u!1 &2011941221
 GameObject:
   m_ObjectHideFlags: 0

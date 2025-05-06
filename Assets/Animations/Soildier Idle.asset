@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8395ea2f694595e4c8ac35bcace6c9ce, type: 3}
+  m_Name: Soildier Idle
+  m_EditorClassIdentifier: 
+  framesOfGap: 20
+  sprites:
+  - {fileID: 1032693037, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  - {fileID: -1035991763, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  - {fileID: 1032693037, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  - {fileID: -1035991763, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  - {fileID: 1032693037, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  - {fileID: -1035991763, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  - {fileID: -75166053, guid: 674b51d60e2d28142976020d0f85b976, type: 3}
+  loop: 1
+  returnToBase: 0

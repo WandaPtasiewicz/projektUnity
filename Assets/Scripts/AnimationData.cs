@@ -9,4 +9,5 @@ public class AnimationData : ScriptableObject
     public int framesOfGap;
     public Sprite[] sprites;
     public bool loop;
+    public bool returnToBase;
 }

@@ -46,11 +46,24 @@ public class ClickManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f); //wait for player to reaching
         }
-        if(canGetItem)
+        player.GetComponent<SpriteAnimator>().PlayAnimation(null); //base player position
+        yield return new WaitForSeconds(0.05f);
+
+        if (canGetItem)
         {
+            //animacjia zbierania itemow
+            player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[2]);
             foreach (GameObject g in item.objectsToRemove) //remove object
             {
                 Destroy(g);
+            }
+            foreach (GameObject g in item.objectsToActive) //show object
+            {
+                g.SetActive(true);
+            }
+            if (item.successAnimation)
+            {
+                item.GetComponent<SpriteAnimator>().PlayAnimation(item.successAnimation);
             }
             Debug.Log("you collected a item");
         }
@@ -59,7 +72,7 @@ public class ClickManager : MonoBehaviour
             gameManager.UpdateHintBox(item, player.GetComponentInChildren<SpriteRenderer>().flipX);
             gameManager.CheckSpecialConditions(item);
         }
-        player.GetComponent<SpriteAnimator>().PlayAnimation(null); //base player position
+        
         yield return null;
     }
 }
