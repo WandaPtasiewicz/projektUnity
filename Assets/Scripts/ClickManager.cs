@@ -70,9 +70,8 @@ public class ClickManager : MonoBehaviour
         else
         {
             gameManager.UpdateHintBox(item, player.GetComponentInChildren<SpriteRenderer>().flipX);
-            gameManager.CheckSpecialConditions(item);
         }
-        
+        gameManager.CheckSpecialConditions(item, canGetItem);
         yield return null;
     }
 }

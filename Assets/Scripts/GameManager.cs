@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -46,6 +47,11 @@ public class GameManager : MonoBehaviour
 
     public void UpdateNameTag(ItemData item)
     {
+        if (item == null)
+        {
+            nameTag.parent.gameObject.SetActive(false);
+            return;
+        }
         nameTag.GetComponentInChildren<TextMeshProUGUI>().text = item.objectName;
         nameTag.sizeDelta = item.nameTagSize;
         nameTag.localPosition = new Vector2(item.nameTagSize.x / 2, -0.5f);
@@ -73,7 +79,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckSpecialConditions(ItemData item)
+    public void CheckSpecialConditions(ItemData item, bool canGetItem)
     {
         switch (item.itemID)
         {
@@ -83,12 +89,15 @@ public class GameManager : MonoBehaviour
                 break;
             case -12:
                 //go to scene 2
-                StartCoroutine(ChangeScene(0, 0));
+                StartCoroutine(ChangeScene(2, 0));
                 break;
             case -1:
                 //win
-                float delay = item.successAnimation.sprites.Length * item.successAnimation.framesOfGap * AnimationData.targetFrameTime;
-                StartCoroutine(ChangeScene(2, delay));
+                if (canGetItem)
+                {
+                    float delay = item.successAnimation.sprites.Length * item.successAnimation.framesOfGap * AnimationData.targetFrameTime;
+                    StartCoroutine(ChangeScene(3, delay));
+                } 
                 break;
         }
     }
@@ -102,9 +111,10 @@ public class GameManager : MonoBehaviour
 
         Color c = blockingImage.color;
         //screnn black and block clixking
-        if(sceneNumber == 2)
+        if(sceneNumber == 3)
         {
             FindObjectOfType<ClickManager>().player.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
         }
 
         blockingImage.enabled = true;
@@ -124,13 +134,13 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<ClickManager>().player.position = playerStartPositions[sceneNumber].position;
         //hide hint box
         UpdateHintBox(null,false);
+        UpdateNameTag(null);
         //reset animations
 
         foreach(SpriteAnimator spriteAnimator in FindObjectsOfType<SpriteAnimator>())
         {
             spriteAnimator.PlayAnimation(null);
         }
-
 
         while (blockingImage.color.a > 0)
         {
@@ -141,5 +151,15 @@ public class GameManager : MonoBehaviour
         //show to scene and enable clicking
         blockingImage.enabled = false;
         yield return null;
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void StartGame()
+    {
+        StartCoroutine(ChangeScene(1, 0));
     }
 }
