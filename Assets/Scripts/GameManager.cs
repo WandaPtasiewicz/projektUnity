@@ -20,6 +20,33 @@ public class GameManager : MonoBehaviour
     int activeLocalScene = 0;
     public Transform[] playerStartPositions;
 
+    public void Update()
+    {
+        int lastScene = activeLocalScene;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UpdateNameTag(null);
+            UpdateHintBox(null,false);
+            Debug.Log("pierd");
+            localScenes[activeLocalScene].SetActive(false);
+            localScenes[4].SetActive(true);
+        }
+
+    }
+
+    public void ResumeGame()
+    {
+        localScenes[4].SetActive(false);
+        if (activeLocalScene == 1) {
+            localScenes[1].SetActive(true);
+        }
+        else
+        {
+            localScenes[2].SetActive(true);
+        }
+
+
+    }
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
         Vector2 positionDiffrence = point - (Vector2)myObject.position; //set direction
@@ -161,5 +188,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         StartCoroutine(ChangeScene(1, 0));
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
