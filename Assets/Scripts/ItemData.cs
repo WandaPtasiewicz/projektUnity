@@ -14,6 +14,7 @@ public class ItemData : MonoBehaviour
     public GameObject[] objectsToRemove;
     public GameObject[] objectsToActive;
     public AnimationData successAnimation;
+    public Sprite itemSlotSprite;
 
     [Header("Failure")]
     [TextArea(3,3)]

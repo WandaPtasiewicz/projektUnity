@@ -16,13 +16,15 @@ public class ClickManager : MonoBehaviour
 
     public void GoToItem(ItemData item)
     {
-        //update hintbox
-        
+        if (playerWalking)
+        {
+            return;
+        }
         // start moving player
         player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[1]);//call animation
+        Debug.Log(gameManager.playerAnimations[1]);
         playerWalking = true;
-        StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));
-        
+        StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));   
         
         // equipment
         TryGettingItem(item);
@@ -32,10 +34,30 @@ public class ClickManager : MonoBehaviour
 
     public void TryGettingItem(ItemData item)
     {
-        bool canGetItem = item.requiredItemID == -1 || GameManager.collectedItems.Contains(item.requiredItemID);
+        List<int> notCollectable = new List<int> { 8, -17, 100, -18 };
+        bool canGetItem = item.requiredItemID == -1;
+
+        foreach(var collectedItem in GameManager.collectedItems)
+        {
+            if(collectedItem.itemID == item.requiredItemID)
+            {
+                canGetItem = true;
+                break;
+            }
+        }
+
         if (canGetItem)
         {
-            GameManager.collectedItems.Add(item.itemID);   
+            if(item.itemID == 8 && item.requiredItemID == 5)
+            {
+                item.requiredItemID++;
+                canGetItem = false;
+            }
+            if(!notCollectable.Contains(item.itemID))
+            {
+                GameManager.collectedItems.Add(item);
+            }
+             
         }
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
@@ -48,24 +70,33 @@ public class ClickManager : MonoBehaviour
         }
         player.GetComponent<SpriteAnimator>().PlayAnimation(null); //base player position
         yield return new WaitForSeconds(0.05f);
-
+        gameManager.RemoveItemFromEquipment(item, canGetItem);
         if (canGetItem)
         {
             //animacjia zbierania itemow
+            
             player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[2]);
+
             foreach (GameObject g in item.objectsToRemove) //remove object
             {
                 Destroy(g);
             }
+
             foreach (GameObject g in item.objectsToActive) //show object
             {
                 g.SetActive(true);
             }
+
             if (item.successAnimation)
             {
                 item.GetComponent<SpriteAnimator>().PlayAnimation(item.successAnimation);
             }
+
             Debug.Log("you collected a item");
+            gameManager.UpdateNameTag(null);
+            gameManager.UpdateHintBox(null, false);
+            gameManager.RemoveItemFromEquipment(item, canGetItem);
+            gameManager.UpdateEquipmentCanvas();
         }
         else
         {

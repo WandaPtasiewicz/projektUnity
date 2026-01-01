@@ -4,60 +4,117 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    public static List<int> collectedItems = new List<int>();
-    static float moveSpeed = 3.5f, moveAccuracy = 0.15f;
+    
+    static float moveSpeed = 5f, moveAccuracy = 0.15f;
 
     [Header("Setup")]
     public AnimationData[] playerAnimations;
     public RectTransform nameTag, hintBox;
+    public GameObject player;
 
     [Header("Local Scenes")]
     public Image blockingImage;
     public GameObject[] localScenes;
-    int activeLocalScene = 0;
+    int activeLocalScene = 1;
     public Transform[] playerStartPositions;
+    public GameObject PauseMenu;
+
+    [Header("Equipment")]
+    public GameObject equipmentCanvas;
+    public Image[] equipmentSlots, equipmentImages;
+    public Sprite emptyItemSlotSprite;
+    public static List<ItemData> collectedItems = new List<ItemData>();
+
+
+    public void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     public void Update()
     {
         int lastScene = activeLocalScene;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            UpdateNameTag(null);
-            UpdateHintBox(null,false);
-            Debug.Log("pierd");
-            localScenes[activeLocalScene].SetActive(false);
-            localScenes[4].SetActive(true);
+            PauseGame();  
+        }
+    }
+    //StartCoroutine(ChangeScene(1, 0));
+    public void UpdateEquipmentCanvas()
+    {
+        //how many iteams we have
+        int itemsAmount = collectedItems.Count;
+        int itemsSlotsAmount = equipmentSlots.Length;
+        //replace blank sprites with item sprite 
+        for(int i = 0; i < itemsSlotsAmount; i++)
+        {
+            if (i < itemsAmount)
+            {
+                equipmentImages[i].sprite = collectedItems[i].itemSlotSprite;
+            }
+            else
+            {
+                equipmentImages[i].sprite = emptyItemSlotSprite;
+            }
+        }
+    }
+    public void RemoveItemFromEquipment(ItemData item, bool canGetItem)
+    {
+        if(item.itemID == 11 && canGetItem)
+        {
+            collectedItems.RemoveAll(item => item.itemID == 10);
+        }
+        if (item.itemID == 12 && canGetItem)
+        {
+            collectedItems.RemoveAll(item => item.itemID == 11);
+        }
+        if (item.itemID == 8 && collectedItems.Any(item => item.itemID == 5))
+        {
+            collectedItems.RemoveAll(item => item.itemID == 5);
         }
 
+        if (item.itemID == 8 && item.requiredItemID == 6 && canGetItem)
+        {
+            collectedItems.RemoveAll(item => item.itemID == 6);
+        }
+        UpdateEquipmentCanvas();
+    }
+
+    public void PauseGame()
+    {
+        if(Time.timeScale == 0f)
+        {
+            ResumeGame();
+        }
+        UpdateNameTag(null);
+        UpdateHintBox(null, false);
+        localScenes[activeLocalScene].SetActive(false);
+        PauseMenu.SetActive(true);
+        player.SetActive(false);
+        Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
-        localScenes[4].SetActive(false);
-        if (activeLocalScene == 1) {
-            localScenes[1].SetActive(true);
-        }
-        else
-        {
-            localScenes[2].SetActive(true);
-        }
-
-
+        localScenes[activeLocalScene].SetActive(true);
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        player.SetActive(true);
     }
+
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
         Vector2 positionDiffrence = point - (Vector2)myObject.position; //set direction
         //flip object
         if (myObject.GetComponentInChildren<SpriteRenderer>() && positionDiffrence.x != 0)
         {
-            myObject.GetComponentInChildren<SpriteRenderer>().flipX = positionDiffrence.x > 0;
+            myObject.GetComponentInChildren<SpriteRenderer>().flipX = positionDiffrence.x < 0;
         }
-        {
-
-        }
+   
         while (positionDiffrence.magnitude > moveAccuracy) //stop when near the point
         {
             myObject.Translate(moveSpeed * positionDiffrence.normalized * Time.deltaTime); // move in direction frame
@@ -80,8 +137,9 @@ public class GameManager : MonoBehaviour
             return;
         }
         nameTag.GetComponentInChildren<TextMeshProUGUI>().text = item.objectName;
+        Debug.Log(item.objectName);
         nameTag.sizeDelta = item.nameTagSize;
-        nameTag.localPosition = new Vector2(item.nameTagSize.x / 2, -0.5f);
+        nameTag.localPosition = new Vector2(item.nameTagSize.x / 2, 0.5f);
     }
 
     public void UpdateHintBox(ItemData item, bool playerFlipped)
@@ -93,7 +151,7 @@ public class GameManager : MonoBehaviour
         }
 
         hintBox.gameObject.SetActive(true);
-
+        Debug.Log(item.hintMessage);
         hintBox.GetComponentInChildren<TextMeshProUGUI>().text = item.hintMessage;
         hintBox.sizeDelta = item.hintBoxSize;
         if (playerFlipped)
@@ -118,12 +176,43 @@ public class GameManager : MonoBehaviour
                 //go to scene 2
                 StartCoroutine(ChangeScene(2, 0));
                 break;
-            case -1:
+            case -13:
+                //go to scene 3
+                StartCoroutine(ChangeScene(3, 0));
+                break;
+            case -14:
+                //go to scene 4
+                StartCoroutine(ChangeScene(4, 0));
+                break;
+            case -15:
+                //go to scene 5
+                StartCoroutine(ChangeScene(5, 0));
+                break;
+            case -16:
+                //go to scene 6
+                StartCoroutine(ChangeScene(6, 0));
+                break;
+            case -17:
+                //go to scene 7
+                if (GameObject.FindGameObjectWithTag("Bear") == null)
+                {
+                    StartCoroutine(ChangeScene(7, 0));
+                }            
+                break;
+            case -18:
+                //go to scene 8
+                if (GameObject.FindGameObjectWithTag("Fire") == null)
+                {
+                    StartCoroutine(ChangeScene(8, 0));
+                }
+                break;
+            case 100:
                 //win
                 if (canGetItem)
                 {
-                    float delay = item.successAnimation.sprites.Length * item.successAnimation.framesOfGap * AnimationData.targetFrameTime;
-                    StartCoroutine(ChangeScene(3, delay));
+                    //float delay = item.successAnimation.sprites.Length * item.successAnimation.framesOfGap * AnimationData.targetFrameTime;
+                    //StartCoroutine(ChangeScene(3, delay));
+                    SceneManager.LoadScene(3);
                 } 
                 break;
         }
@@ -132,17 +221,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator ChangeScene(int sceneNumber, float delay)
     {
         yield return new WaitForSeconds(delay);
-
-        //if end game remove theplayer
-
-
         Color c = blockingImage.color;
-        //screnn black and block clixking
-        if(sceneNumber == 3)
-        {
-            FindObjectOfType<ClickManager>().player.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.5f);
-        }
+        //screnn black and block clixkingc 
 
         blockingImage.enabled = true;
         while (blockingImage.color.a<1)
@@ -152,12 +232,16 @@ public class GameManager : MonoBehaviour
         }
 
         //hide old one
+        Debug.Log(activeLocalScene);
         localScenes[activeLocalScene].SetActive(false);
         //show new one
+        Debug.Log(sceneNumber);
         localScenes[sceneNumber].SetActive(true);
         //remember which is active
         activeLocalScene = sceneNumber;
+        Debug.Log(activeLocalScene);
         //teleport player
+
         FindObjectOfType<ClickManager>().player.position = playerStartPositions[sceneNumber].position;
         //hide hint box
         UpdateHintBox(null,false);
@@ -182,16 +266,21 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
     }
 
-    public void StartGame()
+    public void MainMenu()
     {
-        StartCoroutine(ChangeScene(1, 0));
+        SceneManager.LoadScene(1);
+    }
+    public void Credits()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void ExitGame()
     {
+        Debug.Log("exit");
         Application.Quit();
     }
 }

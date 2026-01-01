@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8395ea2f694595e4c8ac35bcace6c9ce, type: 3}
+  m_Name: Bear Walk
+  m_EditorClassIdentifier: 
+  framesOfGap: 6
+  sprites:
+  - {fileID: -1563336804, guid: ee82df3d0d5fbe7419c2d80c90df0a11, type: 3}
+  - {fileID: -1779826191, guid: ee82df3d0d5fbe7419c2d80c90df0a11, type: 3}
+  - {fileID: 1549229531, guid: ee82df3d0d5fbe7419c2d80c90df0a11, type: 3}
+  loop: 1
+  returnToBase: 0
