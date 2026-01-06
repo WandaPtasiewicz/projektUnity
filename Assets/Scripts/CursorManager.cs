@@ -7,7 +7,13 @@ public class CursorManager : MonoBehaviour
     public Texture2D defaultCursor;
     public Texture2D activeCursor;
     private Vector2 hotspot = Vector2.zero;
-    // Start is called before the first frame update
+
+    void Awake()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     void Start()
     {
         SetDefaultCursor();

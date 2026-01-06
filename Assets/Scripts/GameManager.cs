@@ -29,10 +29,13 @@ public class GameManager : MonoBehaviour
     public Sprite emptyItemSlotSprite;
     public static List<ItemData> collectedItems = new List<ItemData>();
 
-
+    [Header("Puzzles")]
+    public GameObject[] puzzles;
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        collectedItems.Clear();
+        UpdateEquipmentCanvas();
     }
 
     public void Update()
@@ -43,13 +46,11 @@ public class GameManager : MonoBehaviour
             PauseGame();  
         }
     }
-    //StartCoroutine(ChangeScene(1, 0));
     public void UpdateEquipmentCanvas()
     {
-        //how many iteams we have
+        
         int itemsAmount = collectedItems.Count;
         int itemsSlotsAmount = equipmentSlots.Length;
-        //replace blank sprites with item sprite 
         for(int i = 0; i < itemsSlotsAmount; i++)
         {
             if (i < itemsAmount)
@@ -106,22 +107,32 @@ public class GameManager : MonoBehaviour
         player.SetActive(true);
     }
 
+    public void RestartGame()
+    {
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        foreach (var go in FindObjectsOfType<GameObject>())
+        {
+            if (go.scene.name == null) Destroy(go);
+        }
+    }
+
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
-        Vector2 positionDiffrence = point - (Vector2)myObject.position; //set direction
-        //flip object
+        Vector2 positionDiffrence = point - (Vector2)myObject.position;
+        
         if (myObject.GetComponentInChildren<SpriteRenderer>() && positionDiffrence.x != 0)
         {
             myObject.GetComponentInChildren<SpriteRenderer>().flipX = positionDiffrence.x < 0;
         }
    
-        while (positionDiffrence.magnitude > moveAccuracy) //stop when near the point
+        while (positionDiffrence.magnitude > moveAccuracy) 
         {
-            myObject.Translate(moveSpeed * positionDiffrence.normalized * Time.deltaTime); // move in direction frame
-            positionDiffrence = point - (Vector2)myObject.position; //recalculationg position diffrence
+            myObject.Translate(moveSpeed * positionDiffrence.normalized * Time.deltaTime); 
+            positionDiffrence = point - (Vector2)myObject.position;
             yield return null;
         }
-        myObject.position = point; //snap to point
+        myObject.position = point;
         if (myObject == FindObjectOfType<ClickManager>().player)
         {
             FindObjectOfType<ClickManager>().playerWalking = false;
@@ -137,7 +148,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         nameTag.GetComponentInChildren<TextMeshProUGUI>().text = item.objectName;
-        Debug.Log(item.objectName);
+
         nameTag.sizeDelta = item.nameTagSize;
         nameTag.localPosition = new Vector2(item.nameTagSize.x / 2, 0.5f);
     }
@@ -146,12 +157,11 @@ public class GameManager : MonoBehaviour
     {
         if (item == null)
         {
-            hintBox.gameObject.SetActive(false); //hide hint box
+            hintBox.gameObject.SetActive(false);
             return;
         }
 
         hintBox.gameObject.SetActive(true);
-        Debug.Log(item.hintMessage);
         hintBox.GetComponentInChildren<TextMeshProUGUI>().text = item.hintMessage;
         hintBox.sizeDelta = item.hintBoxSize;
         if (playerFlipped)
@@ -190,14 +200,15 @@ public class GameManager : MonoBehaviour
                 break;
             case -16:
                 //go to scene 6
-                StartCoroutine(ChangeScene(6, 0));
+                if (GameObject.FindGameObjectWithTag("Bear") == null)
+                { 
+                    StartCoroutine(ChangeScene(6, 0));
+                }      
                 break;
+
             case -17:
                 //go to scene 7
-                if (GameObject.FindGameObjectWithTag("Bear") == null)
-                {
-                    StartCoroutine(ChangeScene(7, 0));
-                }            
+                StartCoroutine(ChangeScene(7, 0));
                 break;
             case -18:
                 //go to scene 8
@@ -210,8 +221,6 @@ public class GameManager : MonoBehaviour
                 //win
                 if (canGetItem)
                 {
-                    //float delay = item.successAnimation.sprites.Length * item.successAnimation.framesOfGap * AnimationData.targetFrameTime;
-                    //StartCoroutine(ChangeScene(3, delay));
                     SceneManager.LoadScene(3);
                 } 
                 break;
@@ -222,7 +231,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Color c = blockingImage.color;
-        //screnn black and block clixkingc 
 
         blockingImage.enabled = true;
         while (blockingImage.color.a<1)
@@ -231,22 +239,18 @@ public class GameManager : MonoBehaviour
            blockingImage.color = c;
         }
 
-        //hide old one
-        Debug.Log(activeLocalScene);
+      
         localScenes[activeLocalScene].SetActive(false);
-        //show new one
-        Debug.Log(sceneNumber);
+
         localScenes[sceneNumber].SetActive(true);
-        //remember which is active
+
         activeLocalScene = sceneNumber;
-        Debug.Log(activeLocalScene);
-        //teleport player
+  
 
         FindObjectOfType<ClickManager>().player.position = playerStartPositions[sceneNumber].position;
-        //hide hint box
+
         UpdateHintBox(null,false);
         UpdateNameTag(null);
-        //reset animations
 
         foreach(SpriteAnimator spriteAnimator in FindObjectsOfType<SpriteAnimator>())
         {
@@ -258,20 +262,13 @@ public class GameManager : MonoBehaviour
             c.a -= Time.deltaTime;
             blockingImage.color = c;
         }
-
-        //show to scene and enable clicking
         blockingImage.enabled = false;
         yield return null;
     }
 
-    public void ResetGame()
-    {
-        SceneManager.LoadScene(0);
-    }
-
     public void MainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
     public void Credits()
     {
@@ -280,7 +277,6 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        Debug.Log("exit");
         Application.Quit();
     }
 }

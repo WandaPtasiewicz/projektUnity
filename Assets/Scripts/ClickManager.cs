@@ -20,13 +20,12 @@ public class ClickManager : MonoBehaviour
         {
             return;
         }
-        // start moving player
-        player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[1]);//call animation
+
+        player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[1]);
         Debug.Log(gameManager.playerAnimations[1]);
         playerWalking = true;
         StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));   
-        
-        // equipment
+
         TryGettingItem(item);
        
     }
@@ -34,7 +33,7 @@ public class ClickManager : MonoBehaviour
 
     public void TryGettingItem(ItemData item)
     {
-        List<int> notCollectable = new List<int> { 8, -17, 100, -18 };
+        List<int> notCollectable = new List<int> { 8, -16, 100, -18 };
         bool canGetItem = item.requiredItemID == -1;
 
         foreach(var collectedItem in GameManager.collectedItems)
@@ -48,16 +47,16 @@ public class ClickManager : MonoBehaviour
 
         if (canGetItem)
         {
-            if(item.itemID == 8 && item.requiredItemID == 5)
+            if (item.itemID == 8 && item.requiredItemID == 5)
             {
                 item.requiredItemID++;
                 canGetItem = false;
             }
+   
             if(!notCollectable.Contains(item.itemID))
             {
                 GameManager.collectedItems.Add(item);
-            }
-             
+            }    
         }
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
@@ -66,23 +65,35 @@ public class ClickManager : MonoBehaviour
     {
         while (playerWalking)
         {
-            yield return new WaitForSeconds(0.05f); //wait for player to reaching
+            yield return new WaitForSeconds(0.05f);
         }
-        player.GetComponent<SpriteAnimator>().PlayAnimation(null); //base player position
+
+        //puzzle
+        if (canGetItem)
+        {   
+            List<int> itemsWithPuzzle = new List<int> { 2, 5, 8, 12 };
+            int puzzleID = itemsWithPuzzle.IndexOf(item.itemID);
+            if (puzzleID > -1)
+            {
+                gameManager.puzzles[puzzleID].SetActive(true);
+                gameManager.equipmentCanvas.SetActive(false);
+            }
+        }
+
+        player.GetComponent<SpriteAnimator>().PlayAnimation(null);
         yield return new WaitForSeconds(0.05f);
         gameManager.RemoveItemFromEquipment(item, canGetItem);
         if (canGetItem)
         {
-            //animacjia zbierania itemow
-            
+  
             player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[2]);
 
-            foreach (GameObject g in item.objectsToRemove) //remove object
+            foreach (GameObject g in item.objectsToRemove)
             {
                 Destroy(g);
             }
 
-            foreach (GameObject g in item.objectsToActive) //show object
+            foreach (GameObject g in item.objectsToActive)
             {
                 g.SetActive(true);
             }
@@ -92,7 +103,6 @@ public class ClickManager : MonoBehaviour
                 item.GetComponent<SpriteAnimator>().PlayAnimation(item.successAnimation);
             }
 
-            Debug.Log("you collected a item");
             gameManager.UpdateNameTag(null);
             gameManager.UpdateHintBox(null, false);
             gameManager.RemoveItemFromEquipment(item, canGetItem);

@@ -10,7 +10,6 @@ public class NameTag : MonoBehaviour
         resolution = new Vector2(Screen.width, Screen.height);
     }
 
-    
     void LateUpdate()
     {
         FollowMouse();
@@ -18,7 +17,6 @@ public class NameTag : MonoBehaviour
 
     private void FollowMouse()
     {
-
         transform.position = Input.mousePosition / resolution * resolutionInWorldUnits;
     }
 }

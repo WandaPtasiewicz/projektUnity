@@ -249,7 +249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: wyjscie
+  m_text: "wyj\u015Bcie"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5dfc2b3fd86d8047a229bc1ce5cc560, type: 2}
   m_sharedMaterial: {fileID: -2473896403069518457, guid: e5dfc2b3fd86d8047a229bc1ce5cc560, type: 2}

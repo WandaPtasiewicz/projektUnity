@@ -7,32 +7,28 @@ using TMPro;
 
 public class WinManager : MonoBehaviour
 {
-    public void Update()
-    {
-       
-    }
-
     public void Credits()
     {
-        Debug.Log("credits");
         SceneManager.LoadScene(2);
     }
 
     public void RestartGame()
     {
-        Debug.Log("start");
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+        foreach (var go in FindObjectsOfType<GameObject>())
+        {
+            if (go.scene.name == null) Destroy(go);
+        }
     }
 
     public void MainMenu()
     {
-        Debug.Log("menu");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame()
     {
-        Debug.Log("exit");
         Application.Quit();
     }
 }
