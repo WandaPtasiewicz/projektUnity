@@ -5,7 +5,6 @@ using UnityEngine;
 public class PuzzleManager : MonoBehaviour
 {
     public PuzzlePlace[] puzzlePlaces;
-    public GameObject Puzzle;
     GameManager gameManager;
     public GameObject Canvas;
     public int puzzleMatchCheck = 8;
@@ -37,7 +36,7 @@ public class PuzzleManager : MonoBehaviour
 
     void Win()
     {
-        Puzzle.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
         gameManager.equipmentCanvas.SetActive(true);
         Canvas.SetActive(true);
     }

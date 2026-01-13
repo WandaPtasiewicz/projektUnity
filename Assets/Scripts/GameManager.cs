@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public AnimationData[] playerAnimations;
     public RectTransform nameTag, hintBox;
     public GameObject player;
-
+    public GameObject exitButton;
     [Header("Local Scenes")]
     public Image blockingImage;
     public GameObject[] localScenes;
@@ -31,6 +31,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Puzzles")]
     public GameObject[] puzzles;
+    public void Awake()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+    exitButton.SetActive(false);
+#endif
+    }
+
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -247,7 +254,7 @@ public class GameManager : MonoBehaviour
         activeLocalScene = sceneNumber;
   
 
-        FindObjectOfType<ClickManager>().player.position = playerStartPositions[sceneNumber].position;
+        FindObjectOfType<ClickManager>().player.position = playerStartPositions[sceneNumber - 1].position;
 
         UpdateHintBox(null,false);
         UpdateNameTag(null);
@@ -277,6 +284,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+
         Application.Quit();
     }
 }

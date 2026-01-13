@@ -7,10 +7,6 @@ public class PuzzlePlace : MonoBehaviour
     public int placeID;
     public PuzzlePiece currentPiece;
 
-    public bool IsFree()
-    {
-        return currentPiece == null;
-    }
    
     void Start()
     {

@@ -40,7 +40,7 @@ public class ClickManager : MonoBehaviour
         {
             if(collectedItem.itemID == item.requiredItemID)
             {
-                canGetItem = true;
+                canGetItem = true;          
                 break;
             }
         }

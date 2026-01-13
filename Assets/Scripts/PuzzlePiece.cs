@@ -43,8 +43,8 @@ public class PuzzlePiece : MonoBehaviour
         if (dragging && Input.GetMouseButtonUp(0))
         {
             dragging = false;
-            Collider2D placeCol = Physics2D.OverlapPoint(mouseWorld, placeMask);
-            PuzzlePlace place = placeCol ? placeCol.GetComponent<PuzzlePlace>() : null;
+            Collider2D placeCollider = Physics2D.OverlapPoint(mouseWorld, placeMask);
+            PuzzlePlace place = placeCollider ? placeCollider.GetComponent<PuzzlePlace>() : null;
             if (place)
             {
                 Debug.Log("id podniesionego klocka "+pieceID);

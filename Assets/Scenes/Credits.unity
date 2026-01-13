@@ -276,6 +276,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1842689191}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: SetActiveCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1842689191}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: SetDefaultCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &722131827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1842689189}
   - component: {fileID: 1842689190}
+  - component: {fileID: 1842689191}
   m_Layer: 0
   m_Name: CreditsManager
   m_TagString: Untagged
@@ -918,6 +951,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bc91b56f8e8fc438ea29180eb64208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1842689191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842689186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b22c936aa92e6d49a9fffb38b17fbbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 009de4705bfbb304bb11602454c9d6d4, type: 3}
+  activeCursor: {fileID: 2800000, guid: 6928c3d91a287414ea7cda8ebb4edf20, type: 3}
 --- !u!1 &2005715769
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +1029,7 @@ MonoBehaviour:
     \u0142apki: https://www.citypng.com/photo/283307f3/black-cat-paw-print-path-hd-transparent-background\nNiedzwiedz:
     https://kulurc.itch.io/zoo-animals\nCzcionka: https://getfound.pl/102-darmowe-fonty-z-polskimi-znakami/\nOgie\u0144:
     https://brullov.itch.io/fire-animation\nKursory: https://aspecsgaming.itch.io/pixel-art-cursors\nReszta
-    obrazk\xF3w: Wanda Ptasiewicz"
+    obrazk\xF3w: Wanda Ptasiewicz\n\nTw\xF3rczyni gry: Wanda Ptasiewicz"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5dfc2b3fd86d8047a229bc1ce5cc560, type: 2}
   m_sharedMaterial: {fileID: -2473896403069518457, guid: e5dfc2b3fd86d8047a229bc1ce5cc560, type: 2}
@@ -1023,7 +1070,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 25
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 3
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -1045,7 +1092,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -51.00305, z: -300.0174, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
